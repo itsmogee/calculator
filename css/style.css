@@ -1,59 +1,90 @@
 * {
-  border: 0px;
-  padding: 0px;
-  margin: 0px;
-  background-color: darkslategrey;
+  /*background-color: darkslategrey;*/
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
   min-width: 100vw;
   min-height: 100vh;
 }
 
-.header {
-  background-color: cornflowerblue;
-  text-align: center;
-}
-
 .container {
+  background-image: url("../deviljump.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   background-color: tan;
   text-align: center;
+
+  /*flex properties */
+  display: flex;
   flex: 1 0 auto;
 }
 
-.flex-center {
-  justify-items: center;
-  align-content: center;
-}
+.calculator {
+  border: 5px solid #1e2020;
+  background-color: #1e2020;
+  width: 500px;
+  margin: auto;
+  padding: 20px 20px;
+  padding-top: 30px;
+  border-radius: 35px;
 
-.footer {
-  background-color: green;
-  text-align: center;
-}
-
-
-
-.flex {
+  /*flex properties*/
   display: flex;
-}
-
-.flex-col {
   flex-direction: column;
 }
 
-.flex-row {
-  flex-direction: row;
+.display {
+  background-color: #7d998d;
+  color: wheat;
+  border-radius: 5px;
+  display: flex;
+  font-size: 35px;
+  font-weight: 900;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  /*margin: 0 50px;*/
+  padding: 140px 0px;
 }
 
+.buttons {
+  /*background-color: palevioletred;*/
+  column-gap: 8px;
+  row-gap: 8px;
+  margin-top: 20px;
 
-.m-auto {
+  /*flex properties*/
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.button {
+  border-radius: 30px;
+  /*border: 5px solid #a9ab25;*/
+  font-weight: 900;
+  font-size: 24px;
+  color: wheat;
+  width: calc(450px / 4);
+  height: calc(450px / 4);
+}
+
+.lone {
+  width: calc(400px / 3);
+  height: calc(380px / 4);
   margin: auto;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.number {
+  background-color: #504945;
 }
 
-.flex-shrink-0 {
-  flex-shrink: 0;
+.operator {
+  background-color: #e87619;
 }
