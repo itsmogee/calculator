@@ -43,6 +43,7 @@ numberButtons.forEach((button) => {
       } else {
         number_1 += button.textContent;
         display.textContent = number_1;
+        mini_display.textContent += button.textContent;
       }
     }
   });
@@ -50,28 +51,42 @@ numberButtons.forEach((button) => {
 
 // setup clear button
 const clear = document.querySelector(".clear");
+const mini_display = document.querySelector(".mini-display");
+mini_display.textContent = "";
 clear.addEventListener("click", () => {
   number_1 = "";
   tempValue = "";
   operand = "";
   display.textContent = "";
+  mini_display.textContent = "";
 });
 
 // setup operator button
 const operators = document.querySelectorAll(".operator");
 for (const operator of operators) {
   operator.addEventListener("click", () => {
+    if (number_1 === "") {
+      operand = operator.textContent;
+      mini_display.textContent = mini_display.textContent.slice(
+        0,
+        mini_display.textContent.length - 1,
+      );
+      mini_display.textContent += operand;
+      display.textContent = operand;
+      return;
+    }
     if (tempValue.length > 0) {
       tempValue = operate(
         Number.parseInt(tempValue),
         Number.parseInt(number_1),
         operand,
       ).toString();
-      console.log(tempValue);
+      mini_display.textContent = tempValue;
     } else {
       tempValue = display.textContent;
     }
     operand = operator.textContent;
+    mini_display.textContent += operand;
     number_1 = "";
     display.textContent = operand;
   });
@@ -83,6 +98,10 @@ backButton.addEventListener("click", () => {
   if (number_1.length > 0) {
     number_1 = number_1.slice(0, number_1.length - 1);
     display.textContent = number_1;
+    mini_display.textContent = mini_display.textContent.slice(
+      0,
+      mini_display.textContent.length - 1,
+    );
   }
 });
 
