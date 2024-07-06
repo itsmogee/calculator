@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-  background-image: url("../deviljump.jpg");
+  background-image: url("../deviljumped.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-color: tan;
@@ -57,6 +57,7 @@ body {
   color: wheat;
   display: flex;
   font-size: 20px;
+  height: 15px;
   font-weight: 900;
 }
 
