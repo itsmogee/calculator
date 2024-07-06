@@ -52,6 +52,7 @@ numberButtons.forEach((button) => {
 const clear = document.querySelector(".clear");
 clear.addEventListener("click", () => {
   number_1 = "";
+  tempValue = "";
   operand = "";
   display.textContent = "";
 });
@@ -60,9 +61,18 @@ clear.addEventListener("click", () => {
 const operators = document.querySelectorAll(".operator");
 for (const operator of operators) {
   operator.addEventListener("click", () => {
+    if (tempValue.length > 0) {
+      tempValue = operate(
+        Number.parseInt(tempValue),
+        Number.parseInt(number_1),
+        operand,
+      ).toString();
+      console.log(tempValue);
+    } else {
+      tempValue = display.textContent;
+    }
     operand = operator.textContent;
     number_1 = "";
-    tempValue = display.textContent;
     display.textContent = operand;
   });
 }
@@ -80,6 +90,10 @@ backButton.addEventListener("click", () => {
 const equals = document.querySelector(".equals");
 equals.addEventListener("click", () => {
   const num_1 = Number.parseInt(tempValue);
+  if (Number.isNaN(num_1)) {
+    display.textContent = number_1;
+    return;
+  }
   const num_2 = Number.parseInt(number_1);
   const result = operate(num_1, num_2, operand);
   display.textContent = result;
