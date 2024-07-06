@@ -8,8 +8,8 @@ const multiply = (a, b) => a * b;
 
 const divide = (a, b) => a / b;
 
-let number_1 = 0;
-let number_2 = 0;
+let number_1 = "";
+let tempValue = "";
 let operand = "";
 
 function operate(number1, number2, operator) {
@@ -36,6 +36,29 @@ const numberButtons = document.querySelectorAll(".number");
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    display.textContent = button.textContent;
+    if (!numberDone) {
+      if (number_1.length > 8) {
+        display.textContent = number_1;
+      } else {
+        number_1 += button.textContent;
+        display.textContent = number_1;
+      }
+    }
   });
 });
+
+// setup clear button
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", () => {
+  number_1 = "";
+  operand = "";
+  display.textContent = "";
+});
+
+// setup operator button
+const operator = document.querySelectorAll("operator");
+
+// Setup equals button
+const equals = document.querySelector("equals");
+
+equals.addEventListener("click", () => {});
