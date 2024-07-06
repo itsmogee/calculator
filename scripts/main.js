@@ -33,6 +33,7 @@ display.textContent = 0;
 
 // setup numbers buttons to work with display
 const numberButtons = document.querySelectorAll(".number");
+let numberDone = false;
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
