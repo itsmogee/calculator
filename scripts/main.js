@@ -11,6 +11,7 @@ const divide = (a, b) => a / b;
 let number_1 = "";
 let tempValue = "";
 let operand = "";
+let minidisplay = "0";
 
 function operate(number1, number2, operator) {
   switch (operator) {
