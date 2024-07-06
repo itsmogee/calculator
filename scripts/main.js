@@ -14,13 +14,13 @@ let operand = "";
 
 function operate(number1, number2, operator) {
   switch (operator) {
-    case "-":
+    case "\u2212":
       return subtract(number1, number2);
     case "+":
       return add(number1, number2);
-    case "*":
+    case "×":
       return multiply(number2, number1);
-    case "/":
+    case "÷":
       return divide(number1, number2);
     default:
       console.log("Invalid operation");
@@ -57,9 +57,30 @@ clear.addEventListener("click", () => {
 });
 
 // setup operator button
-const operator = document.querySelectorAll("operator");
+const operators = document.querySelectorAll(".operator");
+for (const operator of operators) {
+  operator.addEventListener("click", () => {
+    operand = operator.textContent;
+    number_1 = "";
+    tempValue = display.textContent;
+    display.textContent = operand;
+  });
+}
+
+// setup back button
+const backButton = document.querySelector(".delete");
+backButton.addEventListener("click", () => {
+  if (number_1.length > 0) {
+    number_1 = number_1.slice(0, number_1.length - 1);
+    display.textContent = number_1;
+  }
+});
 
 // Setup equals button
-const equals = document.querySelector("equals");
-
-equals.addEventListener("click", () => {});
+const equals = document.querySelector(".equals");
+equals.addEventListener("click", () => {
+  const num_1 = Number.parseInt(tempValue);
+  const num_2 = Number.parseInt(number_1);
+  const result = operate(num_1, num_2, operand);
+  display.textContent = result;
+});
