@@ -115,11 +115,23 @@ const equals = document.querySelector(".equals");
 equals.addEventListener("click", () => {
   const num_1 = Number.parseFloat(prevNumber);
   if (Number.isNaN(num_1)) {
-    display.textContent = number_1;
+    display.textContent = currentNumber;
     return;
   }
-  const num_2 = Number.parseInt(number_1);
-  const result = operate(num_1, num_2, operand);
+  const num_2 = Number.parseFloat(currentNumber);
+  let result = operate(num_1, num_2, operand).toString();
+
+  // Remove trailing zero and represent number as int
+  console.log(result);
+  if (result.substring(result.length - 3) === ".00") {
+    result = result.substring(0, result.length - 3);
+  }
+  console.log(result);
+  console.log(result.length);
+  if (result.length > 11) {
+    display.textContent = "Number too long";
+    return;
+  }
   display.textContent = result;
 });
 
