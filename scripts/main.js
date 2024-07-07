@@ -8,10 +8,9 @@ const multiply = (a, b) => a * b;
 
 const divide = (a, b) => a / b;
 
-let number_1 = "";
-let tempValue = "";
+let currentNumber = "";
+let prevNumber = "";
 let operand = "";
-let minidisplay = "0";
 
 function operate(number1, number2, operator) {
   switch (operator) {
@@ -48,15 +47,15 @@ for (const button of numberButtons) {
       mini_display.textContent += button.textContent; // update the minidisplay
     }
   });
-});
+}
 
 // setup clear button
 const clear = document.querySelector(".clear");
 const mini_display = document.querySelector(".mini-display");
 mini_display.textContent = "";
 clear.addEventListener("click", () => {
-  number_1 = "";
-  tempValue = "";
+  currentNumber = "";
+  prevNumber = "";
   operand = "";
   display.textContent = "";
   mini_display.textContent = "";
@@ -66,7 +65,7 @@ clear.addEventListener("click", () => {
 const operators = document.querySelectorAll(".operator");
 for (const operator of operators) {
   operator.addEventListener("click", () => {
-    if (number_1 === "") {
+    if (currentNumber === "") {
       operand = operator.textContent;
       mini_display.textContent = mini_display.textContent.slice(
         0,
@@ -76,19 +75,24 @@ for (const operator of operators) {
       display.textContent = operand;
       return;
     }
-    if (tempValue.length > 0) {
-      tempValue = operate(
-        Number.parseInt(tempValue),
-        Number.parseInt(number_1),
+    if (prevNumber.length > 0) {
+      prevNumber = operate(
+        Number.parseFloat(prevNumber),
+        Number.parseFloat(currentNumber),
         operand,
       ).toString();
-      mini_display.textContent = tempValue;
+
+      // Remove trailing zero and represent number as int
+      if (prevNumber.substring(prevNumber.length - 3) === ".00") {
+        prevNumber = prevNumber.substring(0, prevNumber.length - 3);
+      }
+      mini_display.textContent = prevNumber;
     } else {
-      tempValue = display.textContent;
+      prevNumber = display.textContent;
     }
     operand = operator.textContent;
     mini_display.textContent += operand;
-    number_1 = "";
+    currentNumber = "";
     display.textContent = operand;
   });
 }
@@ -96,9 +100,9 @@ for (const operator of operators) {
 // setup back button
 const backButton = document.querySelector(".delete");
 backButton.addEventListener("click", () => {
-  if (number_1.length > 0) {
-    number_1 = number_1.slice(0, number_1.length - 1);
-    display.textContent = number_1;
+  if (currentNumber.length > 0) {
+    currentNumber = currentNumber.slice(0, currentNumber.length - 1);
+    display.textContent = currentNumber;
     mini_display.textContent = mini_display.textContent.slice(
       0,
       mini_display.textContent.length - 1,
@@ -109,7 +113,7 @@ backButton.addEventListener("click", () => {
 // Setup equals button
 const equals = document.querySelector(".equals");
 equals.addEventListener("click", () => {
-  const num_1 = Number.parseInt(tempValue);
+  const num_1 = Number.parseFloat(prevNumber);
   if (Number.isNaN(num_1)) {
     display.textContent = number_1;
     return;
