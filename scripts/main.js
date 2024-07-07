@@ -38,18 +38,14 @@ display.textContent = 0;
 
 // setup numbers buttons to work with display
 const numberButtons = document.querySelectorAll(".number");
-let numberDone = false;
 
-numberButtons.forEach((button) => {
+for (const button of numberButtons) {
   button.addEventListener("click", () => {
-    if (!numberDone) {
-      if (number_1.length > 8) {
-        display.textContent = number_1;
-      } else {
-        number_1 += button.textContent;
-        display.textContent = number_1;
-        mini_display.textContent += button.textContent;
-      }
+    // Limit number length to fit in UI
+    if (currentNumber.length < 8) {
+      currentNumber += button.textContent; // update the number
+      display.textContent = currentNumber; // update the display to show the number
+      mini_display.textContent += button.textContent; // update the minidisplay
     }
   });
 });
