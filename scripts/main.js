@@ -119,6 +119,10 @@ equals.addEventListener("click", () => {
     return;
   }
   const num_2 = Number.parseFloat(currentNumber);
+  if (Number.isNaN(num_2)) {
+    display.textContent = currentNumber;
+    return;
+  }
   let result = operate(num_1, num_2, operand).toString();
 
   // Remove trailing zero and represent number as int
