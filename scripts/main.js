@@ -143,7 +143,9 @@ dot.addEventListener("click", () => {
     return;
   }
 
-  currentNumber += dot.textContent; // insert the period
-  display.textContent = currentNumber; // update display
-  mini_display.textContent += dot.textContent; // update mini-display
+  if (currentNumber.length > 0) {
+    currentNumber += dot.textContent; // insert the period
+    display.textContent = currentNumber; // update display
+    mini_display.textContent += dot.textContent; // update mini-display
+  }
 });
