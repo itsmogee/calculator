@@ -90,7 +90,7 @@ body {
 
 .lone {
   background-color: #e87619;
-  width: calc(400px / 3);
+  width: calc(400px / 2);
   height: calc(380px / 4);
   margin: auto;
 }
