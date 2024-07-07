@@ -16,13 +16,17 @@ let minidisplay = "0";
 function operate(number1, number2, operator) {
   switch (operator) {
     case "\u2212":
-      return subtract(number1, number2);
+      console.log(number1 + operator + number2);
+      return subtract(number1, number2).toFixed(2);
     case "+":
-      return add(number1, number2);
+      console.log(number1 + operator + number2);
+      return add(number1, number2).toFixed(2);
     case "×":
-      return multiply(number2, number1);
+      console.log(number1 + operator + number2);
+      return multiply(number2, number1).toFixed(2);
     case "÷":
-      return divide(number1, number2);
+      console.log(number1 + operator + number2);
+      return divide(number1, number2).toFixed(2);
     default:
       console.log("Invalid operation");
       break;
