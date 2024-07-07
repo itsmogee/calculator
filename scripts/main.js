@@ -122,3 +122,16 @@ equals.addEventListener("click", () => {
   const result = operate(num_1, num_2, operand);
   display.textContent = result;
 });
+
+// setup dot button
+const dot = document.querySelector(".dot");
+dot.addEventListener("click", () => {
+  // Ignore consecutive periods and if periods are already in the string
+  if (mini_display.textContent.includes(".")) {
+    return;
+  }
+
+  currentNumber += dot.textContent; // insert the period
+  display.textContent = currentNumber; // update display
+  mini_display.textContent += dot.textContent; // update mini-display
+});
