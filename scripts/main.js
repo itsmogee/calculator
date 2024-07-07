@@ -127,7 +127,7 @@ equals.addEventListener("click", () => {
 const dot = document.querySelector(".dot");
 dot.addEventListener("click", () => {
   // Ignore consecutive periods and if periods are already in the string
-  if (mini_display.textContent.includes(".")) {
+  if (currentNumber.includes(".")) {
     return;
   }
 
