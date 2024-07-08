@@ -138,7 +138,7 @@ equals.addEventListener("click", () => {
   }
   console.log(result);
   console.log(result.length);
-  if (result.length > 11) {
+  if (result.length > 9) {
     display.textContent = "Number too long";
     return;
   }
