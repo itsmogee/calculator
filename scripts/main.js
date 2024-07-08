@@ -13,6 +13,9 @@ let prevNumber = "";
 let operand = "";
 
 function operate(number1, number2, operator) {
+  if (Number.isNaN(number1) || Number.isNaN(number2)) {
+    return "Invalid Operation";
+  }
   switch (operator) {
     case "\u2212":
       console.log(number1 + operator + number2);
@@ -25,6 +28,9 @@ function operate(number1, number2, operator) {
       return multiply(number2, number1).toFixed(2);
     case "÷":
       console.log(number1 + operator + number2);
+      if (number2 === 0) {
+        return "Relax";
+      }
       return divide(number1, number2).toFixed(2);
     default:
       console.log("Invalid operation");
